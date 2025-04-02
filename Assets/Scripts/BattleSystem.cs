@@ -9,9 +9,12 @@ public class BattleSystem : MonoBehaviour
     private Turn turn = Turn.PlayerWait;
     
     private Texture2D _redTexture, _grayTexture;
+    private SoundPlayer _soundPlayer;
     
     private void Start()
     {
+        _soundPlayer = GameObject.FindWithTag("SoundPlayer").GetComponent<SoundPlayer>();
+        
         // enemy initialize
         // enemy.NewAction();
         // player initialize
@@ -60,7 +63,7 @@ public class BattleSystem : MonoBehaviour
                 if (enemy.action is Attack attackAction)
                 {
                     player.hp -= attackAction.amount;
-                    // playSound
+                    _soundPlayer.punch.Play();
                 }
                 if (enemy.action is Heal healAction)
                 {
