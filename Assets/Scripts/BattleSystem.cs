@@ -1,27 +1,32 @@
+using System;
 using UnityEngine;
-using Color = System.Drawing.Color;
 
 public class BattleSystem : MonoBehaviour
 {
+    public Player player = null;
+    public Enemy enemy = null;
+
     private Turn turn = Turn.PlayerWait;
-
-    private Enemy enemy = null;
-    private Player player = null;
-
+    
     private Texture2D _redTexture, _grayTexture;
     
     private void Start()
     {
-        // enemy setting
-        // player setting
+        // enemy initialize
+        // enemy.NewAction();
+        // player initialize
     }
 
     // Update is called once per frame
     private void Update()
     {
-        if (turn == Turn.PlayerWait)
+        if (turn == Turn.PlayerAnimation)
         {
-            // Card Animation
+            // Card Effect
+        }
+        if (turn == Turn.EnemyAnimation)
+        {
+            // Enemy Action Effect
         }
     }
 
@@ -46,13 +51,27 @@ public class BattleSystem : MonoBehaviour
             case Turn.PlayerWait:
                 turn = Turn.PlayerAnimation;
                 break;
+            
             case Turn.PlayerAnimation:
                 turn = Turn.EnemyWait;
                 break;
+            
             case Turn.EnemyWait:
+                if (enemy.action is Attack attackAction)
+                {
+                    player.hp -= attackAction.amount;
+                    // playSound
+                }
+                if (enemy.action is Heal healAction)
+                {
+                    enemy.hp = Math.Max(enemy.hp + healAction.amount, enemy.maxHp);
+                    // playSound
+                }
                 turn = Turn.EnemyAnimation;
                 break;
+            
             case Turn.EnemyAnimation:
+                enemy.NewAction();
                 turn = Turn.PlayerWait;
                 break;
         }
