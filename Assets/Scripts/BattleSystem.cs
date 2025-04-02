@@ -1,4 +1,5 @@
 using UnityEngine;
+using Color = System.Drawing.Color;
 
 public class BattleSystem : MonoBehaviour
 {
@@ -6,6 +7,8 @@ public class BattleSystem : MonoBehaviour
 
     private Enemy enemy = null;
     private Player player = null;
+
+    private Texture2D _redTexture, _grayTexture;
     
     private void Start()
     {
@@ -53,6 +56,35 @@ public class BattleSystem : MonoBehaviour
                 turn = Turn.PlayerWait;
                 break;
         }
+    }
+    
+    private void OnGUI()
+    {
+        float margin = 10;
+        float xMin = margin;
+        float yMin = margin;
+        float width = (Screen.width - margin * 2) / 2;
+        float height = 20;
+
+        if (!_redTexture)
+        {
+            _redTexture = new Texture2D(1, 1);
+            _redTexture.SetPixel(0,0,UnityEngine.Color.red);
+            _redTexture.Apply();
+        }
+
+        if (!_grayTexture)
+        {
+            _grayTexture = new Texture2D(1, 1);
+            _grayTexture.SetPixel(0,0,UnityEngine.Color.gray);
+            _grayTexture.Apply();
+        }
+        
+        GUI.skin.box.normal.background = _grayTexture;
+        GUI.Box(new Rect(xMin, yMin, width, height), GUIContent.none);
+        
+        GUI.skin.box.normal.background = _redTexture;
+        GUI.Box(new Rect(xMin, yMin, width * player.hp / player.maxHp, height), GUIContent.none);
     }
 }
 
