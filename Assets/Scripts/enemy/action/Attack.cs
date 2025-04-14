@@ -2,18 +2,10 @@
 
 public class Attack : Action
 {
-    public int amount = 0;
+    public int amount;
 
-    public GameObject icon;
-
-    public Attack(int amount, GameObject icon)
+    public Attack(int amount, GameObject icon = null) : base(icon)
     {
         this.amount = amount;
-        this.icon = icon;
-    }
-
-    public GameObject getIcon()
-    {
-        return icon;
     }
 }

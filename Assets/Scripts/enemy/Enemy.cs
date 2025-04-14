@@ -3,8 +3,8 @@ using Random = UnityEngine.Random;
 
 public abstract class Enemy : MonoBehaviour
 {
-    public int maxHp = 0;
-    public int hp = 0;
+    public int maxHp = 20;
+    public int hp = 20;
 
     public Action action;
     public GameObject icon;

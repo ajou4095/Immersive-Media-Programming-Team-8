@@ -1,6 +1,16 @@
 ﻿using UnityEngine;
 
-public interface Action
+public abstract class Action
 {
-    public GameObject getIcon();
+    protected GameObject icon;
+
+    public Action(GameObject icon = null)
+    {
+        this.icon = icon;
+    }
+
+    public GameObject getIcon()
+    {
+        return icon;
+    }
 }

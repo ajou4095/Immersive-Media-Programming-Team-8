@@ -2,15 +2,15 @@ using UnityEngine;
 
 public class Card : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+    public CardType type;
+    public int power;
+    public BattleSystem battleSystem;
 
-    // Update is called once per frame
-    void Update()
+    private void OnMouseDown()
     {
-        
+        if (battleSystem != null)
+        {
+            battleSystem.UseCard(this);
+        }
     }
 }

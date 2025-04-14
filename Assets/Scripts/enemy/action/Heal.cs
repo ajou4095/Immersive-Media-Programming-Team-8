@@ -2,18 +2,10 @@
 
 public class Heal : Action
 {
-    public int amount = 0;
+    public int amount;
 
-    public GameObject icon;
-
-    public Heal(int amount, GameObject icon)
+    public Heal(int amount, GameObject icon = null) : base(icon)
     {
         this.amount = amount;
-        this.icon = icon;
-    }
-
-    public GameObject getIcon()
-    {
-        return icon;
     }
 }
