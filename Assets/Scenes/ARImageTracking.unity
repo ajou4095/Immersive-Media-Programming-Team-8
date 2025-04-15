@@ -333,14 +333,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Camera: {fileID: 1397187884}
-  <TrackablesParent>k__BackingField: {fileID: 0}
   m_OriginBaseGameObject: {fileID: 197398106}
   m_CameraFloorOffsetObject: {fileID: 1427465860}
   m_RequestedTrackingOriginMode: 1
   m_CameraYOffset: 0
-  <CurrentTrackingOriginMode>k__BackingField: 0
-  m_CameraInitialized: 0
-  m_CameraInitializing: 0
 --- !u!4 &197398111
 Transform:
   m_ObjectHideFlags: 0
@@ -372,9 +368,8 @@ MonoBehaviour:
   <trackablesChanged>k__BackingField:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
-  <origin>k__BackingField: {fileID: 0}
-  m_SerializedLibrary: {fileID: 11400000, guid: e6c767c5dc4d91b4584916466e36b1f7, type: 2}
+  m_SerializedLibrary: {fileID: 11400000, guid: e6c767c5dc4d91b4584916466e36b1f7,
+    type: 2}
   m_MaxNumberOfMovingImages: 2
   m_TrackedImagePrefab: {fileID: 0}
 --- !u!114 &197398113
@@ -564,13 +559,6 @@ MonoBehaviour:
         m_Flags: 0
       m_Flags: 0
     m_Reference: {fileID: 0}
-  m_CurrentPosition: {x: 0, y: 0, z: 0}
-  m_CurrentRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_CurrentTrackingState: 3
-  m_RotationBound: 0
-  m_PositionBound: 0
-  m_TrackingStateBound: 0
-  m_IsFirstUpdate: 1
   m_PositionAction:
     m_Name: 
     m_Type: 0
@@ -601,18 +589,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 816b289ef451e094f9ae174fb4cf8db0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_DisplayTransformId: 0
-  m_CameraForwardScaleId: 0
-  m_Camera: {fileID: 0}
-  m_CameraManager: {fileID: 0}
-  m_OcclusionManager: {fileID: 0}
   m_UseCustomMaterial: 0
   m_CustomMaterial: {fileID: 2100000, guid: b6c0f86862e4f1d47a6b2ba78b81be5a, type: 2}
-  m_DefaultMaterial: {fileID: 0}
-  m_PreviousCameraDepthMode: 0
-  m_BackgroundRenderingEnabled: 0
-  m_CommandBufferCullingState: 0
-  m_CommandBufferRenderOrderState: 0
 --- !u!114 &1397187882
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -625,8 +603,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4966719baa26e4b0e8231a24d9bd491a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Camera: {fileID: 0}
-  m_PreRenderInvertCullingValue: 0
   m_FocusMode: -1
   m_LightEstimationMode: -1
   m_AutoFocus: 1
@@ -770,9 +746,6 @@ MonoBehaviour:
   m_AttemptUpdate: 1
   m_MatchFrameRate: 1
   m_TrackingMode: 2
-  m_VSyncCount: 0
-  m_TargetFrameRate: 0
-  m_WasFrameRateSet: 0
 --- !u!4 &1783092969
 Transform:
   m_ObjectHideFlags: 0
