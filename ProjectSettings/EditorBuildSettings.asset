@@ -6,5 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes: []
   m_configObjects:
+    UnityEditor.XR.ARCore.ARCoreSettings: {fileID: 11400000, guid: c72f61cb1685ab249bef835527c4f992, type: 2}
     com.unity.xr.arfoundation.simulation_settings: {fileID: 11400000, guid: 59ae13688297c404f81503563b25a3c4, type: 2}
+    com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 0604dc7fae37cbd429e3fee5aeacc189, type: 2}
   m_UseUCBPForAssetBundles: 0
