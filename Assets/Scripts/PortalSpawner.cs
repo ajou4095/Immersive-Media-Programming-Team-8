@@ -8,7 +8,9 @@ public class PortalSpawner : MonoBehaviour
     private ARTrackedImageManager imageManager;
     private Camera mainCamera;
 
-    public GameObject[] bluePortalMonsters; // [0] 버섯, [1] 선인장
+    public GameObject[] bluePortalMonsters;
+    public GameObject playerPrefab;
+    public GameObject battleSystemPrefab;
 
     private Dictionary<string, GameObject> spawnedPrefabs = new Dictionary<string, GameObject>();
 
@@ -89,6 +91,12 @@ public class PortalSpawner : MonoBehaviour
                 Vector3 lookPos = mainCamera.transform.position;
                 lookPos.y = spawned.transform.position.y;
                 spawned.transform.LookAt(lookPos);
+            }
+
+            MonsterTouch monsterTouch = spawned.GetComponent<MonsterTouch>();
+            if (monsterTouch != null)
+            {
+                monsterTouch.Initialize(battleSystemPrefab, playerPrefab);
             }
         }
         else
