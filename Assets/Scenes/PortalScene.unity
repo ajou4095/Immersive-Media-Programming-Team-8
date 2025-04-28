@@ -627,7 +627,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &247062086
 RectTransform:
   m_ObjectHideFlags: 0
@@ -843,7 +843,7 @@ MonoBehaviour:
   gameCam: {fileID: 1427465860}
   player: {fileID: 370841039}
   enemy: {fileID: 1330454283}
-  battleSystem: {fileID: 0}
+  battleSystem: {fileID: 81183732}
   menuPanel: {fileID: 1677263277}
   gamePanel: {fileID: 247062085}
   AttackcardTxt: {fileID: 943020053}
@@ -889,7 +889,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &690762067
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2267,7 +2267,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1677263278
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3103,6 +3103,7 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 603107427}
+  - {fileID: 8755652921895896758}
   - {fileID: 30804071}
   - {fileID: 123959631}
   - {fileID: 197398111}
@@ -3113,4 +3114,3 @@ SceneRoots:
   - {fileID: 370841040}
   - {fileID: 1330454284}
   - {fileID: 209959371}
-  - {fileID: 8755652921895896758}

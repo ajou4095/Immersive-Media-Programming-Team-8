@@ -26,6 +26,8 @@ public class BattleSystem : MonoBehaviour
     public GameObject winImage;
     public GameObject loseImage;
 
+    private float tick;
+
     private void Start()
     {
         _soundPlayer = GameObject.FindWithTag("SoundPlayer").GetComponent<SoundPlayer>();
@@ -41,13 +43,32 @@ public class BattleSystem : MonoBehaviour
 
     private void Update()
     {
-        
+        if (turn == Turn.PlayerAnimation)
+        {
+            tick += Time.deltaTime;
+
+            if (tick >= 1)
+            {
+                tick = 0;
+                NextTurn();
+            }
+        } else if (turn == Turn.EnemyWait)
+        {
+            NextTurn();
+        } else if (turn == Turn.EnemyAnimation)
+        {
+            tick += Time.deltaTime;
+
+            if (tick >= 1)
+            {
+                tick = 0;
+                NextTurn();
+            }
+        }
     }
 
     public void UseCard(Card card)
     {
-        
-
         switch (card.type)
         {
             case CardType.Attack:
