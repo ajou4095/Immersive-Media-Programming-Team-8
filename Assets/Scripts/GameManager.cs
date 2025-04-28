@@ -7,7 +7,8 @@ public class GameManager : MonoBehaviour
     public GameObject gameCam;
     public Player player;
     public Enemy enemy;
-    public bool isBattle;
+
+    public GameObject battleSystem;
 
     public GameObject menuPanel;
     public GameObject gamePanel;
@@ -32,7 +33,6 @@ public class GameManager : MonoBehaviour
         gameCam.SetActive(true);
 
         menuPanel.SetActive(false);
-        gamePanel.SetActive(true);
 
         player.gameObject.SetActive(true);
     }
@@ -58,5 +58,12 @@ public class GameManager : MonoBehaviour
             PlayerHealthBar.localScale = new Vector3(0, 1, 1);
         
 
+    }
+
+    public void NewBattle(GameObject enemy)
+    {
+        battleSystem.SetActive(true);
+        battleSystem.GetComponent<BattleSystem>().enemy = enemy.GetComponent<Enemy>();
+        gamePanel.SetActive(true);
     }
 }

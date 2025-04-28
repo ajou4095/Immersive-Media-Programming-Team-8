@@ -143,6 +143,7 @@ GameObject:
   - component: {fileID: 1691260113314563210}
   - component: {fileID: -5520968674961764918}
   - component: {fileID: 253323119968049803}
+  - component: {fileID: 8044416252498707762}
   m_Layer: 0
   m_Name: MushroomSmilePBR
   m_TagString: Untagged
@@ -222,6 +223,23 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &8044416252498707762
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1997902569578628670}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14e50a24727e4fbfb49b2354d399b2b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHp: 20
+  hp: 20
+  icon: {fileID: 0}
+  attackIcon: {fileID: 0}
+  healIcon: {fileID: 0}
 --- !u!1 &2411188951558394283
 GameObject:
   m_ObjectHideFlags: 0

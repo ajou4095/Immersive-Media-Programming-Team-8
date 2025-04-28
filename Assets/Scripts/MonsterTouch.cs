@@ -2,27 +2,25 @@ using UnityEngine;
 
 public class MonsterTouch : MonoBehaviour
 {
-    private GameObject battleSystemPrefab;
     private GameObject playerPrefab;
 
-    public void Initialize(GameObject battleSystemPrefab, GameObject playerPrefab)
+    private GameManager _gameManager;
+
+    private void Start()
     {
-        this.battleSystemPrefab = battleSystemPrefab;
+        _gameManager = FindFirstObjectByType<GameManager>();
+    }
+
+    public void Initialize(GameObject playerPrefab)
+    {
         this.playerPrefab = playerPrefab;
     }
 
     private void OnMouseDown()
     {
-        if (battleSystemPrefab == null || playerPrefab == null)
+        if (playerPrefab == null)
             return;
-
-        GameObject battleObject = Instantiate(battleSystemPrefab);
-        BattleSystem battleSystem = battleObject.GetComponent<BattleSystem>();
-
-        if (battleSystem != null)
-        {
-            battleSystem.Player = playerPrefab;
-            battleSystem.Enemy = this.gameObject;
-        }
+        
+        _gameManager.NewBattle(this.gameObject);
     }
 }

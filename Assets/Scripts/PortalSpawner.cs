@@ -96,7 +96,7 @@ public class PortalSpawner : MonoBehaviour
             MonsterTouch monsterTouch = spawned.GetComponent<MonsterTouch>();
             if (monsterTouch != null)
             {
-                monsterTouch.Initialize(battleSystemPrefab, playerPrefab);
+                monsterTouch.Initialize(playerPrefab);
             }
         }
         else

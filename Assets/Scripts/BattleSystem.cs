@@ -41,7 +41,7 @@ public class BattleSystem : MonoBehaviour
 
     private void Update()
     {
-       
+        
     }
 
     public void UseCard(Card card)
