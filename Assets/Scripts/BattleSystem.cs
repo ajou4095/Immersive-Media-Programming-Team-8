@@ -6,8 +6,8 @@ public class BattleSystem : MonoBehaviour
 {
     public Player player;
     public Enemy enemy;
-    public GameObject Player;
-    public GameObject Enemy;
+    //public GameObject Player;
+   // public GameObject Enemy;
 
     private Turn turn = Turn.PlayerWait;
 
