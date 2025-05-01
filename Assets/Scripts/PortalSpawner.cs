@@ -22,15 +22,18 @@ public class PortalSpawner : MonoBehaviour
 
     private void OnEnable()
     {
-        imageManager.trackedImagesChanged += OnImageChanged;
+        //imageManager.trackedImagesChanged += OnImageChanged;
+        imageManager.trackablesChanged.AddListener(OnImageChanged);
     }
 
     private void OnDisable()
     {
-        imageManager.trackedImagesChanged -= OnImageChanged;
+        //  imageManager.trackedImagesChanged -= OnImageChanged;
+        imageManager.trackablesChanged.AddListener(OnImageChanged);
     }
 
-    private void OnImageChanged(ARTrackedImagesChangedEventArgs args)
+    //private void OnImageChanged(ARTrackedImagesChangedEventArgs args)
+    private void OnImageChanged(ARTrackablesChangedEventArgs<ARTrackedImage> args)
     {
         foreach (var image in args.added)
         {
@@ -42,9 +45,9 @@ public class PortalSpawner : MonoBehaviour
             HandleImage(image);
         }
 
-        foreach (var image in args.removed)
+        foreach (var pair in args.removed)
         {
-            string name = image.referenceImage.name;
+            string name = pair.Value.referenceImage.name;
             if (spawnedPrefabs.ContainsKey(name))
             {
                 Destroy(spawnedPrefabs[name]);
@@ -56,8 +59,7 @@ public class PortalSpawner : MonoBehaviour
     private void HandleImage(ARTrackedImage image)
     {
         string name = image.referenceImage.name;
-
-        if (name != "blue_portal") return;
+        if (name != "ajou") return;
 
         if (image.trackingState != TrackingState.Tracking)
         {
@@ -73,7 +75,6 @@ public class PortalSpawner : MonoBehaviour
         {
             int randIndex = Random.Range(0, bluePortalMonsters.Length);
             GameObject selectedPrefab = bluePortalMonsters[randIndex];
-
             GameObject spawned = Instantiate(selectedPrefab, image.transform.position, Quaternion.identity);
             spawnedPrefabs[name] = spawned;
 

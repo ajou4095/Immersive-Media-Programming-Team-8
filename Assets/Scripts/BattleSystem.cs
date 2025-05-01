@@ -1,9 +1,12 @@
 using System;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class BattleSystem : MonoBehaviour
 {
+    public static BattleSystem Inst {  get; private set; }
+
     public Player player;
     public Enemy enemy;
     //public GameObject Player;
@@ -14,26 +17,36 @@ public class BattleSystem : MonoBehaviour
     private Texture2D _redTexture, _grayTexture;
     private SoundPlayer _soundPlayer;
 
-    [Header("Card Prefabs")]
-    public GameObject attackCardPrefab;
-    public GameObject defenseCardPrefab;
-    public GameObject explosionCardPrefab;
-
-    [Header("Card Spawn Area")]
-    public Transform cardSpawnArea;
-
     [Header("Result Images")]
     public GameObject winImage;
     public GameObject loseImage;
 
     private float tick;
 
+    // test용. 나중에 수정
+    public TextMeshProUGUI playerHpTMP;
+    public TextMeshProUGUI enemyHpTMP;
+
+    private void Awake()
+    {
+        Inst = this;
+        Init();
+    }
+
+    private void Init()
+    {
+        player = GameManager.Instance.player;
+
+        // test용. 나중에 수정
+        enemy = FindAnyObjectByType<Enemy>();
+    }
+
     private void Start()
     {
-        _soundPlayer = GameObject.FindWithTag("SoundPlayer").GetComponent<SoundPlayer>();
+        //_soundPlayer = GameObject.FindWithTag("SoundPlayer").GetComponent<SoundPlayer>();
 
-        enemy.NewAction();
-        player.BackupCards();
+        //enemy.NewAction();
+        //player.BackupCards();
 
         SpawnPlayerCards();
 
@@ -65,23 +78,15 @@ public class BattleSystem : MonoBehaviour
                 NextTurn();
             }
         }
+
+        //test용. 나중에 수정
+        playerHpTMP.text = "PlayerHP: " + player.hp.ToString();
+        enemyHpTMP.text = "EnemyHP: " + enemy.hp.ToString();
     }
 
-    public void UseCard(Card card)
+    public void UseCard(Card cardSO)
     {
-        switch (card.type)
-        {
-            case CardType.Attack:
-                enemy.hp -= card.power;
-                _soundPlayer.punch.Play();
-                break;
-            case CardType.Defense:
-                player.hp = Mathf.Min(player.hp + card.power, player.maxHp);
-                break;
-            case CardType.Explosion:
-                enemy.hp -= card.power * 2;
-                break;
-        }
+        cardSO.UseEffect(player, enemy);
 
         NextTurn();
     }
@@ -103,6 +108,7 @@ public class BattleSystem : MonoBehaviour
                 turn = Turn.EnemyWait;
                 break;
             case Turn.EnemyWait:
+                /*
                 if (enemy.action is Attack attackAction)
                 {
                     player.hp -= attackAction.amount;
@@ -112,11 +118,14 @@ public class BattleSystem : MonoBehaviour
                 {
                     enemy.hp = Math.Min(enemy.hp + healAction.amount, enemy.maxHp);
                 }
+                */
                 turn = Turn.EnemyAnimation;
                 break;
             case Turn.EnemyAnimation:
-                enemy.NewAction();
+                //enemy.NewAction();
+                player.TakeDamage(3);
                 turn = Turn.PlayerWait;
+                SpawnPlayerCards();
                 break;
         }
     }
@@ -127,43 +136,21 @@ public class BattleSystem : MonoBehaviour
         {
             if (winImage != null) winImage.SetActive(true);
 
-            player.ResetCards();
-            CardType randomType = (CardType)UnityEngine.Random.Range(0, 3);
-            player.AddCardReward(randomType);
+            //player.ResetCards();
+            //CardType randomType = (CardType)UnityEngine.Random.Range(0, 3);
+            //player.AddCardReward(randomType);
         }
         else if (player.hp <= 0)
         {
             if (loseImage != null) loseImage.SetActive(true);
 
-            player.ResetCards();
+            //player.ResetCards();
         }
     }
 
     private void SpawnPlayerCards()
     {
-        if (cardSpawnArea == null) return;
-
-        foreach (Transform child in cardSpawnArea)
-        {
-            Destroy(child.gameObject);
-        }
-
-        SpawnCard(attackCardPrefab, CardType.Attack);
-        SpawnCard(defenseCardPrefab, CardType.Defense);
-        SpawnCard(explosionCardPrefab, CardType.Explosion);
-    }
-
-    private void SpawnCard(GameObject prefab, CardType type)
-    {
-        if (prefab == null) return;
-
-        GameObject cardObj = Instantiate(prefab, cardSpawnArea);
-        Card card = cardObj.GetComponent<Card>();
-        if (card != null)
-        {
-            card.type = type;
-            card.battleSystem = this;
-        }
+        CardUIManager.Inst.DrawNewDeck();
     }
 
     private void OnGUI()

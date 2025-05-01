@@ -333,10 +333,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 370841039}
-  enemy: {fileID: 0}
+  enemy: {fileID: 1330454283}
   attackCardPrefab: {fileID: 2993779069444111820, guid: ae6d09d9175cf4040a5d70f39c27e104, type: 3}
-  defenseCardPrefab: {fileID: 0}
-  explosionCardPrefab: {fileID: 0}
+  defenseCardPrefab: {fileID: 2993779069444111820, guid: 7b849985e48eadf429edca4735e99a9f, type: 3}
+  explosionCardPrefab: {fileID: 2993779069444111820, guid: 82c39285b6140344bb88bcb68a885b87, type: 3}
   cardSpawnArea: {fileID: 0}
   winImage: {fileID: 0}
   loseImage: {fileID: 0}
@@ -546,55 +546,6 @@ MonoBehaviour:
   m_CameraFloorOffsetObject: {fileID: 1427465860}
   m_RequestedTrackingOriginMode: 0
   m_CameraYOffset: 1.1176
---- !u!1 &209959369
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 209959371}
-  - component: {fileID: 209959370}
-  m_Layer: 0
-  m_Name: PortalSpawner
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!114 &209959370
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 209959369}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 72219ecee942dae4997f1c98346127e7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bluePortalMonsters:
-  - {fileID: 1997902569578628670, guid: c3c76a247c7e43b19a40ebfcfefa8f19, type: 3}
-  - {fileID: 662468794185850985, guid: a48631e259d0486fa83621f7d8f36e72, type: 3}
-  playerPrefab: {fileID: 370841038}
-  battleSystemPrefab: {fileID: 81183732}
---- !u!4 &209959371
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 209959369}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 349.13904, y: 258.41632, z: 31.019156}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &238996176
 GameObject:
   m_ObjectHideFlags: 0
@@ -1984,7 +1935,23 @@ MonoBehaviour:
       m_Id: 29ecaabc-da42-40aa-a841-e8acfbec6873
       m_Processors: 
       m_Interactions: 
-      m_SingletonActionBindings: []
+      m_SingletonActionBindings:
+      - m_Name: 
+        m_Id: ec44e90a-2901-4bfc-a2f7-2d5917ff71d6
+        m_Path: <XRHMD>/centerEyePosition
+        m_Interactions: 
+        m_Processors: 
+        m_Groups: 
+        m_Action: Position Input
+        m_Flags: 0
+      - m_Name: 
+        m_Id: 32857506-796d-4109-aa2f-b8c9e367f35a
+        m_Path: <XRInputV1::ARFoundationRemoteInputDevice>/deviceposition
+        m_Interactions: 
+        m_Processors: 
+        m_Groups: 
+        m_Action: Position Input
+        m_Flags: 0
       m_Flags: 0
     m_Reference: {fileID: 0}
   m_RotationInput:
@@ -1996,7 +1963,23 @@ MonoBehaviour:
       m_Id: 67598529-f56b-4c58-9299-0e795a4768c3
       m_Processors: 
       m_Interactions: 
-      m_SingletonActionBindings: []
+      m_SingletonActionBindings:
+      - m_Name: 
+        m_Id: 38d19211-2123-4221-a452-29e15d246b3c
+        m_Path: <XRHMD>/centerEyeRotation
+        m_Interactions: 
+        m_Processors: 
+        m_Groups: 
+        m_Action: Rotation Input
+        m_Flags: 0
+      - m_Name: 
+        m_Id: 3efec711-06a6-4278-b775-a274c1047dc8
+        m_Path: <XRInputV1::ARFoundationRemoteInputDevice>/devicerotation
+        m_Interactions: 
+        m_Processors: 
+        m_Groups: 
+        m_Action: Rotation Input
+        m_Flags: 0
       m_Flags: 0
     m_Reference: {fileID: 0}
   m_TrackingStateInput:
@@ -3143,6 +3126,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BattleObject
       objectReference: {fileID: 0}
+    - target: {fileID: 2562974589852314120, guid: 2678f62b495d6bf4ba1324892dce5e38, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3166,4 +3153,3 @@ SceneRoots:
   - {fileID: 1781955790}
   - {fileID: 370841040}
   - {fileID: 1330454284}
-  - {fileID: 209959371}

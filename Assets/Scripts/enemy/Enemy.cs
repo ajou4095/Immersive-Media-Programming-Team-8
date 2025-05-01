@@ -15,5 +15,11 @@ public abstract class Enemy : MonoBehaviour
         hp = this.maxHp;
     }
 
+    public void TakeDamage(int damage)
+    {
+        hp = hp - damage > 0 ? hp - damage : 0;
+        Debug.Log($"Enemy took {damage} damage! Remaining HP: {hp}");
+    }
+
     public abstract Action NewAction();
 }

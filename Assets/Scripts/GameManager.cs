@@ -1,8 +1,9 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
-public class GameManager : MonoBehaviour
+public class GameManager : Singleton<GameManager>
 {
     public GameObject gameCam;
     public Player player;
@@ -12,14 +13,6 @@ public class GameManager : MonoBehaviour
 
     public GameObject menuPanel;
     public GameObject gamePanel;
-
-    public TextMeshProUGUI AttackcardTxt;
-    public TextMeshProUGUI DefencecardTxt;
-    public TextMeshProUGUI ExplosioncardTxt;
-
-    public Image Attackcard;
-    public Image Defencecard;
-    public Image Explosioncard;
 
     public RectTransform EnemyGroup;
     public RectTransform EnemyHealthBar;
@@ -37,16 +30,9 @@ public class GameManager : MonoBehaviour
         player.gameObject.SetActive(true);
     }
 
+    /*
     void LateUpdate()
     {
-        AttackcardTxt.text = player.cardCounts[CardType.Attack].ToString();
-        DefencecardTxt.text = player.cardCounts[CardType.Defense].ToString();
-        ExplosioncardTxt.text = player.cardCounts[CardType.Explosion].ToString();
-
-        Attackcard.color = new Color(1, 1, 1, (player.cardCounts[CardType.Attack] != 0) ? 1 : 0);
-        Defencecard.color = new Color(1, 1, 1, (player.cardCounts[CardType.Defense] != 0) ? 1 : 0);
-        Explosioncard.color = new Color(1, 1, 1, (player.cardCounts[CardType.Explosion] != 0) ? 1 : 0);
-
         if (enemy.maxHp > 0)
             EnemyHealthBar.localScale = new Vector3(enemy.hp / enemy.maxHp, 1, 1);
         else
@@ -59,11 +45,19 @@ public class GameManager : MonoBehaviour
         
 
     }
+    */
 
     public void NewBattle(GameObject enemy)
     {
+        SceneManager.LoadScene("BattleScene");
         battleSystem.SetActive(true);
         battleSystem.GetComponent<BattleSystem>().enemy = enemy.GetComponent<Enemy>();
         gamePanel.SetActive(true);
+    }
+
+    // test용. 나중에 지울 것
+    public void SceneButton_BattleScene()
+    {
+        SceneManager.LoadScene("BattleScene");
     }
 }
